@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sxt</groupId>
+    <artifactId>20180820-springboot</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!--
+       现在springboot的所有版本号都没有出现过2.0.x以上的
+       一般情况下，公司使用的框架版本号都是1.5.9-1.5.15之间(比较稳定)
+       ===》该项目的父工程是spring-boot-starter-parent
+       ===》spring-boot-starter-parent的父工程spring-boot-dependencies
+       ===》相当于本项目的父级工程是spring-boot-dependencies
+       spring-boot-dependencies中的所有jar包都可以使用
+
+       所以如果构建springboot项目
+           只需要一个java工程即可
+           引入一个父工程spring-boot-starter-parent
+           并且重写spring-boot-starter-web的jar包即可
+   -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.10.RELEASE</version>
+    </parent>
+
+    <!--
+        spring-boot-starter-web：springboot的核心jar包
+        需求:
+            需要集成redis的框架
+            所有的springboot的jar包中，都已经提前准备好了所有的框架整合，如果项目需求中需要用到某一些框架，则直接使用jar包引入即可，不再需要自行从maven库中挑选jar包
+            jdbc:连接数据库
+            redis:缓存库
+            jpa:通用mapper中的实体类@Table @Id @Column(hibernate) springcloud中体现
+            solr:搜索引擎
+            aop:切面
+            cache:spring自带的缓存器
+            activiti:工作流
+            shiro:安全管理框架
+            .....
+
+            springboot springdata springcloud(面向服务的编程思想)====》微服务架构
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>
